@@ -13,3 +13,9 @@ To run this application:
    yarn
    
    yarn start
+
+Some global packages - 
+
+npm i --save graphql
+
+npm install --save express apollo-server-express cors
