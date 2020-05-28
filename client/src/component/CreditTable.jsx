@@ -1,5 +1,6 @@
 import React from "react";
-import { Avatar, Box, Text, Heading, Flex } from "@chakra-ui/core";
+import { Box, Text, Heading, Flex } from "@chakra-ui/core";
+import Avatar from 'react-avatar';
 
 function CreditTable(props) {
 
@@ -10,28 +11,23 @@ function CreditTable(props) {
 				py={3}
 				px={5}
 				my={1}
-				border='1px'
-				borderRadius='md'
-				borderColor="#EEF2F9"
 			>
 				<Flex alignItems='center'>
-					{/*
 					<Avatar
-						size='md'
-						src={"default_path"}
-						mr={4}
+						name='I N'
+						round={true}
+						size='50'
+						color='gray'
 					/>
-					*/}
-					<Box>
+					<Box ml='10px'>
 						<Heading as='h6' size='sm'>
 							{props.accountName}
 						</Heading>
 						<Text fontSize='sm'>
-							Amount: {props.amount}
-							<Text as='i' color="#677793" mx={1}>
-								|
-							</Text>
-							Date: {props.date}
+							Staking Amount: {props.amount}
+										|
+									Date:
+										{props.date}
 						</Text>
 					</Box>
 				</Flex>

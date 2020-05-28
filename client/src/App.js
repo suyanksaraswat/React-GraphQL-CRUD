@@ -45,23 +45,21 @@ function App() {
 					as='b'
 					py={2}
 					px={4}
-					transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-					borderWidth='1px'
-					borderColor="#EEF2F9"
 					fontSize='sm'
 					cursor='pointer'
-					color={currentTab === "Debit" ? "#FFF" : "#2D3748"}
+					border='2px solid gray'
+					color={currentTab === "Debit" ? "#000000" : "#808080"}
 					bg={
 					currentTab === "Debit"
-					? "#19CC95"
-					: "rgba(255,255,255,0)"
+					? "#FFF"
+					: "#DCDCDC"
 					}
 					_hover={{
-					bg: currentTab === "Debit" ? "#19CC95" : "#EEF2F9"
+					bg: currentTab === "Debit" ? "#FFF" : "#DCDCDC"
 					}}
 					boxShadow={
 					currentTab === "Debit"
-					? `0 0 0 0.2rem "#19CC9533"`
+					? `0 0 0 0.2rem "#808080"`
 					: "none"
 					}
 					onClick={() => {
@@ -75,22 +73,21 @@ function App() {
 					py={2}
 					px={4}
 					transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-					borderWidth='1px'
-					borderColor="#EEF2F9"
+					border='2px solid gray'
 					fontSize='sm'
 					cursor='pointer'
-					color={currentTab === "Credit" ? "#FFF" : "#2D3748"}
+					color={currentTab === "Credit" ? "#000000" : "#808080"}
 					bg={
 					currentTab === "Credit"
-					? "#19CC95"
-					: "rgba(255,255,255,0)"
+					? "#FFF"
+					: "#DCDCDC"
 					}
 					_hover={{
-					bg: currentTab === "Credit" ? "#19CC95" : "#EEF2F9"
+					bg: currentTab === "Credit" ? "#FFF" : "#DCDCDC"
 					}}
 					boxShadow={
 					currentTab === "Credit"
-					? `0 0 0 0.2rem "#19CC9533"`
+					? `0 0 0 0.2rem "#808080"`
 					: "none"
 					}
 					onClick={() => {
@@ -102,12 +99,16 @@ function App() {
 			</Flex>
 			<Flex wrap='wrap-reverse'>
 				<Box>
-					<Box>
 						{currentTab === "Debit" ? (
-						<Box w='100%' p={2} mt={6} maxHeight='50vh' overflow='auto'>
+						<Box 
+							w='150%' 
+							p={2} 
+							mt={1}
+							maxHeight='100vh' 
+							overflow='auto'>
 							{data.entries &&
 							data.entries.map((entry, index) => {
-									if (entry.amount[0] == '-'){
+									if (entry.amount[0] === '-'){
 									return (
 										<DebitTable
 											accountName={entry.accountName}
@@ -119,10 +120,17 @@ function App() {
 								})}
 						</Box>
 						) : (
-						<Box w='100%' p={2} mt={6} maxHeight='50vh' overflow='auto'>
+						<Box 
+							w='150%' 
+							p={2} 
+							mt={1} 
+							border='2px #808080'
+							maxHeight='100vh' 
+							overflow='auto'
+						>
 							{data.entries &&
 								data.entries.map((entry, index) => {
-									if (entry.amount[0] != '-'){
+									if (entry.amount[0] !== '-'){
 									return (
 										<CreditTable
 											accountName={entry.accountName}
@@ -134,7 +142,6 @@ function App() {
 								})}
 						</Box>
 						)}
-					</Box>
 				</Box>
 			</Flex>
 			<h3>Create New Entry</h3>
@@ -151,15 +158,6 @@ function App() {
 				<input className="form-control" type="text" placeholder="Enter date" ref={node => { date = node; }}></input>
 				<button className="btn btn-primary px-5 my-2" type="submit">Submit</button>
 			</form>
-			<ul>
-				{data.entries.map((entry) =>
-				<li key={entry.accountName} className="w-100">
-					<span>{entry.accountName}</span>
-					<span>{entry.amount}</span>
-					<span>{entry.date}</span>
-				</li>
-				)}
-			</ul>
 		</div>
 		);
 }
