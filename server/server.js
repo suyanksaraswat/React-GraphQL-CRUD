@@ -2,13 +2,7 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const cors = require('cors');
 
-let entries = [
-	{
-		accountName: 'account_name',
-		amount: 'amount',
-		date: 'date'
-	}
-];
+let entries = [];
 
 const typeDefs = gql`
   type Entry {

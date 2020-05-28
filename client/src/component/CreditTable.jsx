@@ -24,10 +24,9 @@ function CreditTable(props) {
 							{props.accountName}
 						</Heading>
 						<Text fontSize='sm'>
-							Staking Amount: {props.amount}
+							Amount: {props.amount}
 										|
-									Date:
-										{props.date}
+							Date: {props.date}
 						</Text>
 					</Box>
 				</Flex>
